@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Container, Typography, Grid, Paper } from '@mui/material';
+import { Box, Container, Typography, Paper } from '@mui/material';
 
 const crops = [
   { name: 'Soja', icon: '🌱' },
@@ -12,22 +12,31 @@ function Crops() {
   return (
     <Box component="section" sx={{ py: 8, bgcolor: '#f4fbf4' }}>
       <Container>
-        <Typography variant="h3" align="center" gutterBottom color="textSecondary">
+        <Typography variant="h3" align="center" gutterBottom color="textSecondary" sx={{ mb: 4 }}>
           Principais Culturas
         </Typography>
-        <Grid container spacing={4} justifyContent="center">
+        <Box sx={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: 4 }}>
           {crops.map((crop) => (
-            <Grid item xs={12} sm={6} md={3} key={crop.name}>
-              <Paper elevation={3} sx={{ p: 4, textAlign: 'center', borderRadius: 2, bgcolor: 'white' }}>
-                <Typography variant="h1" sx={{ mb: 2 }}>{crop.icon}</Typography>
-                <Typography variant="h5" color="secondary" fontWeight="bold">{crop.name}</Typography>
-              </Paper>
-            </Grid>
+            <Paper 
+              key={crop.name} 
+              elevation={3} 
+              sx={{ 
+                p: 4, 
+                textAlign: 'center', 
+                borderRadius: 2, 
+                bgcolor: 'white', 
+                minWidth: '200px',
+                flex: '0 1 auto'
+              }}
+            >
+              <Typography variant="h1" sx={{ mb: 2 }}>{crop.icon}</Typography>
+              <Typography variant="h5" color="secondary" fontWeight="bold">{crop.name}</Typography>
+            </Paper>
           ))}
-        </Grid>
+        </Box>
       </Container>
     </Box>
   );
 }
 
-export default Crops;   
+export default Crops;
